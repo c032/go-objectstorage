@@ -24,6 +24,8 @@ func TestMemoryStore(t *testing.T) {
 		t.Fatal(err)
 	}
 
+	buf.Reset()
+
 	const testContent = "Hello, world!"
 
 	_, err = buf.WriteString(testContent)
@@ -40,6 +42,8 @@ func TestMemoryStore(t *testing.T) {
 		t.Fatalf("buf.Len() = %#v; want %#v", got, want)
 	}
 
+	buf.Reset()
+
 	_, err = ms.Read(key, buf)
 	if err != nil {
 		t.Fatal(err)
@@ -53,6 +57,8 @@ func TestMemoryStore(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+
+	buf.Reset()
 
 	_, err = ms.Read(key, buf)
 	if err == nil {
