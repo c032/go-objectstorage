@@ -1,8 +1,11 @@
 package objectstorage
 
 import (
+	"errors"
 	"io"
 )
+
+var ErrNotFound error = errors.New("not found")
 
 type Store interface {
 	StoreReader
@@ -15,5 +18,5 @@ type StoreReader interface {
 
 type StoreWriter interface {
 	Put(key string, r io.Reader) error
-	Remove(path string) error
+	Remove(key string) error
 }
