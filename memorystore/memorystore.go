@@ -45,7 +45,7 @@ func (ms *MemoryStore) Read(key string, w io.Writer) (int64, error) {
 		return 0, objectstorage.ErrNotFound
 	}
 
-	buf := bytes.NewBuffer(b)
+	buf := bytes.NewReader(b)
 
 	return buf.WriteTo(w)
 }
